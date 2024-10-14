@@ -67,9 +67,6 @@ class ShoeInventory:
                     return True
         return False
 
-    def generate_report(self):
-        print("Generating report... (This feature is not implemented yet)")
-
 def add_data(inventory):
     category = input("Enter category: ")
     shoe_id = int(input("Enter shoe ID: "))
@@ -114,7 +111,6 @@ def main():
         print("3. Search specific data")
         print("4. Update data")
         print("5. Delete data")
-        print("6. Generate report")
         choice = input("Enter your choice: ")
 
         if choice == '1':
@@ -127,8 +123,6 @@ def main():
             update_data(inventory)
         elif choice == '5':
             delete_data(inventory)
-        elif choice == '6':
-            inventory.generate_report()
         else:
             print("Invalid choice. Please try again.")
 
