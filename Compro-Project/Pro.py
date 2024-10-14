@@ -102,6 +102,10 @@ def delete_data(inventory):
     else:
         print("Item not found.")
 
+def exit_program():
+    print("Exiting program...")
+    exit()
+
 def main():
     inventory = ShoeInventory()
     
@@ -111,6 +115,7 @@ def main():
         print("3. Search specific data")
         print("4. Update data")
         print("5. Delete data")
+        print("6. Exit program")
         choice = input("Enter your choice: ")
 
         if choice == '1':
@@ -123,6 +128,8 @@ def main():
             update_data(inventory)
         elif choice == '5':
             delete_data(inventory)
+        elif choice == '6':
+            exit_program()
         else:
             print("Invalid choice. Please try again.")
 
