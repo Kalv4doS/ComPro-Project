@@ -67,31 +67,37 @@ class ShoeInventory:
                     return True
         return False
 
-# การใช้งาน
-inventory = ShoeInventory()
+def main():
+    # สร้างอ็อบเจ็กต์ ShoeInventory
+    inventory = ShoeInventory()
 
-# เพิ่มข้อมูล
-inventory.add_item("Sneakers", 7, "Nike Air Max", 229.0, 2)
-inventory.add_item("Sneakers", 8, "Adidas Ultraboost", 669.0, 2)
-inventory.add_item("Formal Shoes", 5, "Oxford Shoes", 199.0, 1)
-inventory.add_item("Formal Shoes", 6, "Derby Shoes", 369.0, 2)
-inventory.add_item("Sandals", 3, "Flip Flops", 90.0, 12)
-inventory.add_item("Sandals", 4, "Birkenstock Sandals", 160.0, 4)
-inventory.add_item("Boots", 1, "Timberland Boots", 60.0, 2)
-inventory.add_item("Boots", 2, "Dr. Martens", 60.0, 2)
+    # เพิ่มข้อมูลสินค้า
+    inventory.add_item("Sneakers", 7, "Nike Air Max", 229.0, 2)
+    inventory.add_item("Sneakers", 8, "Adidas Ultraboost", 669.0, 2)
+    inventory.add_item("Formal Shoes", 5, "Oxford Shoes", 199.0, 1)
+    inventory.add_item("Formal Shoes", 6, "Derby Shoes", 369.0, 2)
+    inventory.add_item("Sandals", 3, "Flip Flops", 90.0, 12)
+    inventory.add_item("Sandals", 4, "Birkenstock Sandals", 160.0, 4)
+    inventory.add_item("Boots", 1, "Timberland Boots", 60.0, 2)
+    inventory.add_item("Boots", 2, "Dr. Martens", 60.0, 2)
 
-# แสดงข้อมูลทั้งหมด
-inventory.show_all()
+    # แสดงข้อมูลทั้งหมดในคลัง
+    inventory.show_all()
 
-# ค้นหารองเท้าตาม ID
-found_item = inventory.find_item(7)
-print("\nค้นหารองเท้า ID 7:", found_item)
+    # ค้นหารองเท้า ID 7
+    found_item = inventory.find_item(7)
+    print("\nค้นหารองเท้า ID 7:", found_item)
 
-# อัปเดตข้อมูล
-inventory.update_item(8, new_price=700.0, new_quantity=1)
+    # อัปเดตรายการรองเท้า
+    inventory.update_item(8, new_price=700.0, new_quantity=1)
 
-# ลบข้อมูล
-inventory.delete_item(1)
+    # ลบข้อมูลรองเท้า ID 1
+    inventory.delete_item(1)
 
-# แสดงข้อมูลทั้งหมดหลังจากอัปเดตและลบ
-inventory.show_all()
+    # แสดงข้อมูลทั้งหมดหลังจากอัปเดตและลบ
+    print("\nข้อมูลหลังจากการอัปเดตและลบ:")
+    inventory.show_all()
+
+# เรียกใช้งานฟังก์ชัน main
+if __name__ == "__main__":
+    main()
