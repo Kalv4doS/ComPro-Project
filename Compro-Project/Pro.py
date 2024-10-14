@@ -67,37 +67,70 @@ class ShoeInventory:
                     return True
         return False
 
+    def generate_report(self):
+        print("Generating report... (This feature is not implemented yet)")
+
+def add_data(inventory):
+    category = input("Enter category: ")
+    shoe_id = int(input("Enter shoe ID: "))
+    name = input("Enter shoe name: ")
+    price = float(input("Enter price: "))
+    quantity = int(input("Enter quantity: "))
+    inventory.add_item(category, shoe_id, name, price, quantity)
+    print("Item added successfully.")
+
+def search_data(inventory):
+    shoe_id = int(input("Enter shoe ID to find: "))
+    item = inventory.find_item(shoe_id)
+    if item:
+        print("Found item:", item)
+    else:
+        print("Item not found.")
+
+def update_data(inventory):
+    shoe_id = int(input("Enter shoe ID to update: "))
+    new_price = input("Enter new price (leave blank to skip): ")
+    new_quantity = input("Enter new quantity (leave blank to skip): ")
+    new_price = float(new_price) if new_price else None
+    new_quantity = int(new_quantity) if new_quantity else None
+    if inventory.update_item(shoe_id, new_price, new_quantity):
+        print("Item updated successfully.")
+    else:
+        print("Item not found.")
+
+def delete_data(inventory):
+    shoe_id = int(input("Enter shoe ID to delete: "))
+    if inventory.delete_item(shoe_id):
+        print("Item deleted successfully.")
+    else:
+        print("Item not found.")
+
 def main():
-    # สร้างอ็อบเจ็กต์ ShoeInventory
     inventory = ShoeInventory()
+    
+    while True:
+        print("\n1. Add new data")
+        print("2. Show all data")
+        print("3. Search specific data")
+        print("4. Update data")
+        print("5. Delete data")
+        print("6. Generate report")
+        choice = input("Enter your choice: ")
 
-    # เพิ่มข้อมูลสินค้า
-    inventory.add_item("Sneakers", 7, "Nike Air Max", 229.0, 2)
-    inventory.add_item("Sneakers", 8, "Adidas Ultraboost", 669.0, 2)
-    inventory.add_item("Formal Shoes", 5, "Oxford Shoes", 199.0, 1)
-    inventory.add_item("Formal Shoes", 6, "Derby Shoes", 369.0, 2)
-    inventory.add_item("Sandals", 3, "Flip Flops", 90.0, 12)
-    inventory.add_item("Sandals", 4, "Birkenstock Sandals", 160.0, 4)
-    inventory.add_item("Boots", 1, "Timberland Boots", 60.0, 2)
-    inventory.add_item("Boots", 2, "Dr. Martens", 60.0, 2)
+        if choice == '1':
+            add_data(inventory)
+        elif choice == '2':
+            inventory.show_all()
+        elif choice == '3':
+            search_data(inventory)
+        elif choice == '4':
+            update_data(inventory)
+        elif choice == '5':
+            delete_data(inventory)
+        elif choice == '6':
+            inventory.generate_report()
+        else:
+            print("Invalid choice. Please try again.")
 
-    # แสดงข้อมูลทั้งหมดในคลัง
-    inventory.show_all()
-
-    # ค้นหารองเท้า ID 7
-    found_item = inventory.find_item(7)
-    print("\nค้นหารองเท้า ID 7:", found_item)
-
-    # อัปเดตรายการรองเท้า
-    inventory.update_item(8, new_price=700.0, new_quantity=1)
-
-    # ลบข้อมูลรองเท้า ID 1
-    inventory.delete_item(1)
-
-    # แสดงข้อมูลทั้งหมดหลังจากอัปเดตและลบ
-    print("\nข้อมูลหลังจากการอัปเดตและลบ:")
-    inventory.show_all()
-
-# เรียกใช้งานฟังก์ชัน main
 if __name__ == "__main__":
     main()
