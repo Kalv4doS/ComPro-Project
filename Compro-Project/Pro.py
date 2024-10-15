@@ -5,7 +5,7 @@ inventory = {
     "Boots": []
 }
 
-def main_menu():
+def main():
     while True:
         print("\n1. Add new data")
         print("2. Show all data")
@@ -112,4 +112,4 @@ def exit_program():
     exit()
 
 if __name__ == "__main__":
-    main_menu()
+    main()
